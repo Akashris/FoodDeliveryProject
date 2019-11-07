@@ -8,70 +8,77 @@ namespace FoodDeliveryProject
         int[] deliveryBoyTwoTips = new int[100];
         int[] difference = new int[100];
         int[] sort = new int[100];
-
-        int orders, a, TotalOrderDeliveryBoy1, TotalOrderDeliveryBoy2, i, j, index, arrayLength, temp = 0, maxTip = 0, count1 = 0, count2 = 0;
+        int orders, tempTotalOrder, TotalOrderDeliveryBoy1, TotalOrderDeliveryBoy2, arrayTraverseVariable, sortTraverseVariable, index, arrayLength, temp = 0, maxTip = 0, orderCountForBoy1 = 0, orderCountForBoy2 = 0;
         string tipValueFor1, tipValueFor2;
+
         public void getValue()
         {
-            orders = -1;
-            while(orders < 1)
+            try
             {
-                Console.Write("\nEnter The orders: ");
-                orders = Convert.ToInt32(Console.ReadLine());
-                if(orders <= 0)
+                orders = -1;
+                while (orders < 1)
                 {
-                    Console.WriteLine("\nEnter a Positive or Non Zero number");
-                }
-             
-            }
-            a = orders-1;
-            while(a < orders)
-            {
-                Console.Write("\nNo. Of Orders For Delivery Boy One = ");
-                TotalOrderDeliveryBoy1 = Convert.ToInt32(Console.ReadLine());
-                Console.Write("\nNo. Of Orders For Delivery Boy Two = ");
-                TotalOrderDeliveryBoy2 = Convert.ToInt32(Console.ReadLine());
-                a = TotalOrderDeliveryBoy1 + TotalOrderDeliveryBoy2;
-                if (a < orders)
-                {
-                    Console.WriteLine("\nSum Of Both Delivery Boy's Orders Must Be Equal Or Greater Than total Orders");
-                }
-            }
-           
+                    Console.Write("\nEnter The orders: ");
+                    orders = Convert.ToInt32(Console.ReadLine());
+                    if (orders <= 0)
+                    {
+                        Console.WriteLine("\nEnter a Positive or Non Zero number");
+                    }
 
-            Console.WriteLine("\nEnter The Tips For Both Delivery Boys: ");
-            Console.Write("\nDelivery Boy One = ");
-            tipValueFor1 = Console.ReadLine();
-            Console.Write("\nDelivery Boy Two = ");
-            tipValueFor2 = Console.ReadLine();
-            arrayLength = tipValueFor1.Split(" ").Length;
-            for (i = 0; i < arrayLength; i++)
+                }
+                tempTotalOrder = orders - 1;
+                while (tempTotalOrder < orders)
+                {
+                    Console.Write("\nNo. Of Orders For Delivery Boy One = ");
+                    TotalOrderDeliveryBoy1 = Convert.ToInt32(Console.ReadLine());
+                    Console.Write("\nNo. Of Orders For Delivery Boy Two = ");
+                    TotalOrderDeliveryBoy2 = Convert.ToInt32(Console.ReadLine());
+                    tempTotalOrder = TotalOrderDeliveryBoy1 + TotalOrderDeliveryBoy2;
+                    if (tempTotalOrder < orders)
+                    {
+                        Console.WriteLine("\nSum Of Both Delivery Boy's Orders Must Be Equal Or Greater Than total Orders");
+                    }
+                }
+
+
+                Console.WriteLine("\nEnter The Tips For Both Delivery Boys: ");
+                Console.Write("\nDelivery Boy One = ");
+                tipValueFor1 = Console.ReadLine();
+                Console.Write("\nDelivery Boy Two = ");
+                tipValueFor2 = Console.ReadLine();
+                arrayLength = tipValueFor1.Split(" ").Length;
+                for (arrayTraverseVariable = 0; arrayTraverseVariable < arrayLength; arrayTraverseVariable++)
+                {
+                    deliveryBoyOneTips[arrayTraverseVariable] = Int32.Parse(tipValueFor1.Split(' ')[arrayTraverseVariable]);
+                    deliveryBoyTwoTips[arrayTraverseVariable] = Int32.Parse(tipValueFor2.Split(' ')[arrayTraverseVariable]);
+                }
+
+            }
+            catch(FormatException)
             {
-                deliveryBoyOneTips[i] = Int32.Parse(tipValueFor1.Split(' ')[i]);
-                deliveryBoyTwoTips[i] = Int32.Parse(tipValueFor2.Split(' ')[i]);
+                Console.WriteLine("\nEnter a Valid Number");
             }
         }
 
 
 
-
         public void sorting()
         {
-            for (i = 0; i < arrayLength; i++)
+            for (arrayTraverseVariable = 0; arrayTraverseVariable < arrayLength; arrayTraverseVariable++)
             {
-                difference[i] = Math.Abs(deliveryBoyOneTips[i] - deliveryBoyTwoTips[i]);
-                sort[i] = difference[i];
+                difference[arrayTraverseVariable] = Math.Abs(deliveryBoyOneTips[arrayTraverseVariable] - deliveryBoyTwoTips[arrayTraverseVariable]);
+                sort[arrayTraverseVariable] = difference[arrayTraverseVariable];
             }
 
-            for (i = 0; i < arrayLength; i++)
+            for (arrayTraverseVariable = 0; arrayTraverseVariable < arrayLength; arrayTraverseVariable++)
             {
-                for (j = 0; j < arrayLength - 1; j++)
+                for (sortTraverseVariable = 0; sortTraverseVariable < arrayLength - 1; sortTraverseVariable++)
                 {
-                    if (sort[j] < sort[j + 1])
+                    if (sort[sortTraverseVariable] < sort[sortTraverseVariable + 1])
                     {
-                        temp = sort[j + 1];
-                        sort[j + 1] = sort[j];
-                        sort[j] = temp;
+                        temp = sort[sortTraverseVariable + 1];
+                        sort[sortTraverseVariable + 1] = sort[sortTraverseVariable];
+                        sort[sortTraverseVariable] = temp;
                     }
                 }
             }
@@ -84,39 +91,43 @@ namespace FoodDeliveryProject
         {
 
 
-            for (i = 0; i < arrayLength; i++)
+            for (arrayTraverseVariable = 0; arrayTraverseVariable < arrayLength; arrayTraverseVariable++)
             {
-                index = Array.IndexOf(difference, sort[i]);
+                index = Array.IndexOf(difference, sort[arrayTraverseVariable]);
                 if (deliveryBoyOneTips[index] > deliveryBoyTwoTips[index])
                 {
-                    count1 += 1;
-                    if (count1 <= TotalOrderDeliveryBoy1)
+                    orderCountForBoy1 += 1;
+                    if (orderCountForBoy1 <= TotalOrderDeliveryBoy1)
                     {
                         maxTip += deliveryBoyOneTips[index];
-
+                        
+                        deliveryBoyOneTips[index] = deliveryBoyTwoTips[index] = difference[index] = -1;
                     }
                     else
                     {
                         maxTip += deliveryBoyTwoTips[index];
-                        count2 += 1;
-                        count1 -= 1;
-
+                        orderCountForBoy2 += 1;
+                        orderCountForBoy1 -= 1;
+                        
+                        deliveryBoyOneTips[index] = deliveryBoyTwoTips[index] = difference[index] = -1;
                     }
                 }
                 else
                 {
-                    count2 += 1;
-                    if (count2 <= TotalOrderDeliveryBoy2)
+                    orderCountForBoy2 += 1;
+                    if (orderCountForBoy2 <= TotalOrderDeliveryBoy2)
                     {
                         maxTip += deliveryBoyTwoTips[index];
-
+                      
+                        deliveryBoyOneTips[index] = deliveryBoyTwoTips[index] = difference[index] = -1;
                     }
                     else
                     {
                         maxTip += deliveryBoyOneTips[index];
-                        count1 += 1;
-                        count2 -= 1;
-
+                        orderCountForBoy1 += 1;
+                        orderCountForBoy2 -= 1;
+                      
+                        deliveryBoyOneTips[index] = deliveryBoyTwoTips[index] = difference[index] = -1;
                     }
 
                 }
