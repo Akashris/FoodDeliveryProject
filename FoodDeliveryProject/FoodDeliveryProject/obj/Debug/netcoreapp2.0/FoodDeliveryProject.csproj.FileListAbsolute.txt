@@ -1,0 +1,11 @@
+C:\Users\akash\Desktop\FoodDelivery\FoodDeliveryProject\FoodDeliveryProject\bin\Debug\netcoreapp2.0\FoodDeliveryProject.deps.json
+C:\Users\akash\Desktop\FoodDelivery\FoodDeliveryProject\FoodDeliveryProject\bin\Debug\netcoreapp2.0\FoodDeliveryProject.runtimeconfig.json
+C:\Users\akash\Desktop\FoodDelivery\FoodDeliveryProject\FoodDeliveryProject\bin\Debug\netcoreapp2.0\FoodDeliveryProject.runtimeconfig.dev.json
+C:\Users\akash\Desktop\FoodDelivery\FoodDeliveryProject\FoodDeliveryProject\bin\Debug\netcoreapp2.0\FoodDeliveryProject.dll
+C:\Users\akash\Desktop\FoodDelivery\FoodDeliveryProject\FoodDeliveryProject\bin\Debug\netcoreapp2.0\FoodDeliveryProject.pdb
+C:\Users\akash\Desktop\FoodDelivery\FoodDeliveryProject\FoodDeliveryProject\obj\Debug\netcoreapp2.0\FoodDeliveryProject.csprojAssemblyReference.cache
+C:\Users\akash\Desktop\FoodDelivery\FoodDeliveryProject\FoodDeliveryProject\obj\Debug\netcoreapp2.0\FoodDeliveryProject.csproj.CoreCompileInputs.cache
+C:\Users\akash\Desktop\FoodDelivery\FoodDeliveryProject\FoodDeliveryProject\obj\Debug\netcoreapp2.0\FoodDeliveryProject.AssemblyInfoInputs.cache
+C:\Users\akash\Desktop\FoodDelivery\FoodDeliveryProject\FoodDeliveryProject\obj\Debug\netcoreapp2.0\FoodDeliveryProject.AssemblyInfo.cs
+C:\Users\akash\Desktop\FoodDelivery\FoodDeliveryProject\FoodDeliveryProject\obj\Debug\netcoreapp2.0\FoodDeliveryProject.dll
+C:\Users\akash\Desktop\FoodDelivery\FoodDeliveryProject\FoodDeliveryProject\obj\Debug\netcoreapp2.0\FoodDeliveryProject.pdb
